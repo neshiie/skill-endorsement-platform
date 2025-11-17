@@ -1,0 +1,7 @@
+DEBUG:MySQLPersistenceWrapper:2025-11-10 18:56:07,117:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-10 18:56:07,117:__init__: DB Connection Config Dict: {'database': 'database_name', 'user': 'database_username', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-10 18:56:30,935:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-10 18:56:30,935:__init__: DB Connection Config Dict: {'database': 'database_name', 'user': 'database_username', 'host': 'localhost', 'port': 3306}
+DEBUG:AppServices:2025-11-10 18:56:30,935:__init__:It works!
+DEBUG:UserInterface:2025-11-10 18:56:30,935:__init__:It works!
+DEBUG:UserInterface:2025-11-10 18:56:30,935:start: User interface started!
