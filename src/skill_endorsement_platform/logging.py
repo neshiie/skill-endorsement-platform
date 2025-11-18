@@ -2,7 +2,7 @@
 
 import logging
 import logging.handlers
-from application_name.settings import Settings
+from skill_endorsement_platform.settings import Settings
 import os
 
 class LoggingService():
@@ -10,13 +10,13 @@ class LoggingService():
 
     def __init__(self, class_name:str, logfile_prefix_name:str=None)->None:
         """Initialize instance."""
-        
+
         self._logger = logging.getLogger(class_name)
         self._logger.propagate = False
         self._settings_dict = Settings().read_settings_file_from_location()
         self._logfile_prefix_name = logfile_prefix_name
         self.log_level = logging.ERROR
-        
+
         if self._settings_dict['log_level'] == 'notset':
             self._logger.setLevel(logging.NOTSET)
             self.log_level = logging.NOTSET
@@ -50,17 +50,17 @@ class LoggingService():
                 self._logger.addHandler(self._ch)
 
             if self._settings_dict['log_to_file']:
-                log_file = os.path.join(self._settings_dict['logs_dir'], 
+                log_file = os.path.join(self._settings_dict['logs_dir'],
                             f"{self._logfile_prefix_name}_" \
                             f"{self._settings_dict['log_filename']}")
-                self._fh = logging.handlers.TimedRotatingFileHandler(log_file, 
+                self._fh = logging.handlers.TimedRotatingFileHandler(log_file,
                             when='midnight', backupCount=20)
                 self._fh.setLevel(logging.DEBUG)
                 self._fh.setFormatter(self._formatter)
                 self._logger.addHandler(self._fh)
-        
 
-    
+
+
     def log_debug(self, message):
         """Log to debug."""
         self._logger.debug(message)

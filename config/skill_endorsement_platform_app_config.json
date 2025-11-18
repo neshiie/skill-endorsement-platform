@@ -12,8 +12,8 @@
 		},
 		"connection":{
 			"config":{
-				"database": "database_name",
-				"user": "database_username",
+				"database": "skill_endorsement_db",
+				"user": "root",
 				"host": "localhost",
 				"port": 3306
 			}

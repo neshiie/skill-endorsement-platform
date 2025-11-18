@@ -1,7 +1,7 @@
 """Implements the applicatin user interface."""
 
-from application_name.application_base import ApplicationBase
-from application_name.service_layer.app_services import AppServices
+from skill_endorsement_platform.application_base import ApplicationBase
+from skill_endorsement_platform.service_layer.app_services import AppServices
 import inspect
 import json
 
@@ -11,7 +11,7 @@ class UserInterface(ApplicationBase):
         """Initializes object. """
         self._config_dict = config
         self.META = config["meta"]
-        super().__init__(subclass_name=self.__class__.__name__, 
+        super().__init__(subclass_name=self.__class__.__name__,
 				   logfile_prefix_name=self.META["log_prefix"])
         self.DB = AppServices(config)
         self._logger.log_debug(f'{inspect.currentframe().f_code.co_name}:It works!')

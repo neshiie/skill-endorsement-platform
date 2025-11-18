@@ -11,7 +11,7 @@ class Settings():
         """Initialize instance."""
         self._default_settings_filename = default_settings_filename
 
-    def create_settings_json_file(self, 
+    def create_settings_json_file(self,
                                 filename:str='app_settings.json') -> dict:
         """Create default settings file if none exists."""
         if not isinstance(filename, str):
@@ -27,14 +27,14 @@ class Settings():
                 settings['log_to_console'] = True
                 settings['log_to_file'] = True
                 settings['deployed_to_production'] = False
-                
+
             case _:
                 settings['logs_dir'] = 'logs'
                 settings['log_filename'] = 'app.log'
                 settings['log_level'] = 'debug'
                 settings['log_to_console'] = True
                 settings['log_to_file'] = True
-                settings['deployed_to_production'] = False    
+                settings['deployed_to_production'] = False
         try:
             with open(filename, 'w') as f:
                 f.write(json.dumps(settings))
@@ -43,7 +43,7 @@ class Settings():
         return settings
 
 
-    def read_settings_file_from_location(self, 
+    def read_settings_file_from_location(self,
                                         filename:str='app_settings.json')->dict:
         """Read settings file and return dictionary.
         If settings file does not exist create default settings file.

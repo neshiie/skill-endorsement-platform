@@ -1,0 +1,8 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE TABLE endorsements_xref;
+TRUNCATE TABLE user_skills_xref;
+TRUNCATE TABLE skills;
+TRUNCATE TABLE users;
+
+SET FOREIGN_KEY_CHECKS = 1;

@@ -1,0 +1,26 @@
+DEBUG:MySQLPersistenceWrapper:2025-11-10 18:56:07,117:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-10 18:56:07,117:__init__: DB Connection Config Dict: {'database': 'database_name', 'user': 'database_username', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-10 18:56:30,935:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-10 18:56:30,935:__init__: DB Connection Config Dict: {'database': 'database_name', 'user': 'database_username', 'host': 'localhost', 'port': 3306}
+DEBUG:AppServices:2025-11-10 18:56:30,935:__init__:It works!
+DEBUG:UserInterface:2025-11-10 18:56:30,935:__init__:It works!
+DEBUG:UserInterface:2025-11-10 18:56:30,935:start: User interface started!
+DEBUG:MySQLPersistenceWrapper:2025-11-17 13:25:29,026:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-17 13:25:29,026:__init__: DB Connection Config Dict: {'database': 'database_name', 'user': 'database_username', 'host': 'localhost', 'port': 3306}
+DEBUG:AppServices:2025-11-17 13:25:29,026:__init__:It works!
+DEBUG:UserInterface:2025-11-17 13:25:29,026:__init__:It works!
+DEBUG:UserInterface:2025-11-17 13:25:29,027:start: User interface started!
+DEBUG:MySQLPersistenceWrapper:2025-11-17 13:36:37,881:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-17 13:36:37,882:__init__: DB Connection Config Dict: {'database': 'database_name', 'user': 'database_username', 'host': 'localhost', 'port': 3306}
+DEBUG:AppServices:2025-11-17 13:36:37,882:__init__:It works!
+DEBUG:UserInterface:2025-11-17 13:36:37,882:__init__:It works!
+DEBUG:UserInterface:2025-11-17 13:36:37,882:start: User interface started!
+DEBUG:MySQLPersistenceWrapper:2025-11-17 13:49:24,423:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-17 13:49:24,423:__init__: DB Connection Config Dict: {'database': 'database_name', 'user': 'database_username', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-17 13:49:24,424:Creating connection pool...
+ERROR:MySQLPersistenceWrapper:2025-11-17 13:49:24,499:_initialize_database_connection_pool: Problem creating connection pool: 1044 (42000): Access denied for user ''@'localhost' to database 'database_name'
+ERROR:MySQLPersistenceWrapper:2025-11-17 13:49:24,500:_initialize_database_connection_pool: Check DB cnfg:
+{"pool": {"name": "app_name_db_bool", "size": 10, "reset_session": true}, "connection": {"config": {"database": "database_name", "user": "database_username", "host": "localhost", "port": 3306}}}
+DEBUG:AppServices:2025-11-17 13:49:24,500:__init__:It works!
+DEBUG:UserInterface:2025-11-17 13:49:24,500:__init__:It works!
+DEBUG:UserInterface:2025-11-17 13:49:24,500:start: User interface started!
