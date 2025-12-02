@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 mysql = "*"
 mysql-connector-python = "*"
+tabulate = "*"
+rich = "*"
+pyfiglet = "*"
 
 [dev-packages]
 

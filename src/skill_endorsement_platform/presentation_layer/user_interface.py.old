@@ -1,0 +1,46 @@
+"""Implements the applicatin user interface."""
+
+from skill_endorsement_platform.application_base import ApplicationBase
+from skill_endorsement_platform.service_layer.app_services import AppServices
+import inspect
+import json
+
+class UserInterface(ApplicationBase):
+    """UserInterface Class Definition."""
+    def __init__(self, config:dict)->None:
+        """Initializes object. """
+        self._config_dict = config
+        self.META = config["meta"]
+        super().__init__(subclass_name=self.__class__.__name__,
+				   logfile_prefix_name=self.META["log_prefix"])
+        self.DB = AppServices(config)
+        self._logger.log_debug(f'{inspect.currentframe().f_code.co_name}:It works!')
+
+
+
+    def start(self):
+        self._logger.log_debug("UI started!")
+        print("Testing DB queries through service layer...\n")
+
+        # === EXAMPLES ===
+
+        # 1. Get all users
+        users = self.DB.query_pretty("get all users")
+        print("All users:", users)
+        print("----------------")
+
+        # 2. Get users by ID
+        user = self.DB.query_pretty("get users by id", 1)
+        print("User with ID 1:", user)
+        print("----------------")
+
+        # 3. Get skills by category
+        skills = self.DB.query_pretty("get skills by cat", "%Prog%")
+        print("Software skills:", skills)
+        print("----------------")
+
+        # 4. Endorsements for a given user
+        endorsements = self.DB.query_pretty("get endorsements by endorser", 3)
+        print("Endorsements by user 12:", endorsements)
+        print("----------------")
+

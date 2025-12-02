@@ -1,0 +1,26 @@
+DEBUG:MySQLPersistenceWrapper:2025-11-17 15:05:07,574:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-17 15:05:07,575:__init__: DB Connection Config Dict: {'database': 'database_name', 'user': 'database_username', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-17 15:05:07,575:Creating connection pool...
+ERROR:MySQLPersistenceWrapper:2025-11-17 15:05:07,585:_initialize_database_connection_pool: Problem creating connection pool: 1044 (42000): Access denied for user ''@'localhost' to database 'database_name'
+ERROR:MySQLPersistenceWrapper:2025-11-17 15:05:07,586:_initialize_database_connection_pool: Check DB cnfg:
+{"pool": {"name": "app_name_db_bool", "size": 10, "reset_session": true}, "connection": {"config": {"database": "database_name", "user": "database_username", "host": "localhost", "port": 3306}}}
+DEBUG:AppServices:2025-11-17 15:05:07,586:__init__:It works!
+DEBUG:UserInterface:2025-11-17 15:05:07,586:__init__:It works!
+DEBUG:UserInterface:2025-11-17 15:05:07,586:start: User interface started!
+DEBUG:MySQLPersistenceWrapper:2025-11-17 15:06:36,566:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-17 15:06:36,566:__init__: DB Connection Config Dict: {'database': 'skill_endorsement_db', 'user': 'root', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-17 15:06:36,567:Creating connection pool...
+DEBUG:MySQLPersistenceWrapper:2025-11-17 15:06:36,582:_initialize_database_connection_pool: Connection pool successfully created!
+DEBUG:AppServices:2025-11-17 15:06:36,582:__init__:It works!
+DEBUG:UserInterface:2025-11-17 15:06:36,583:__init__:It works!
+DEBUG:UserInterface:2025-11-17 15:06:36,583:start: User interface started!
+DEBUG:MySQLPersistenceWrapper:2025-11-17 22:24:58,148:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-17 22:24:58,149:__init__: DB Connection Config Dict: {'database': 'skill_endorsement_db', 'user': 'root', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-17 22:24:58,149:Creating connection pool...
+DEBUG:MySQLPersistenceWrapper:2025-11-17 22:24:58,187:_initialize_database_connection_pool: Connection pool successfully created!
+DEBUG:AppServices:2025-11-17 22:24:58,187:__init__:It works!
+DEBUG:UserInterface:2025-11-17 22:24:58,188:__init__:It works!
+DEBUG:UserInterface:2025-11-17 22:24:58,188:start: User interface started!
+DEBUG:AppServices:2025-11-18 00:36:24,163:__init__:It works!
+DEBUG:UserInterface:2025-11-18 00:36:24,163:__init__:It works!
+DEBUG:UserInterface:2025-11-18 00:36:24,163:UI started!

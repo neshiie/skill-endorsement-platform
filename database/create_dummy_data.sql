@@ -1,8 +1,8 @@
 INSERT INTO users (username, email, hashed_password, full_name, role)
 VALUES
-('alice', 'alice@example.com', 'hashed_pw_here', 'Alice Smith', 'student'),
-('bob', 'bob@example.com', 'hashed_pw_here', 'Bob Johnson', 'student'),
-('prof_jones', 'jones@example.com', 'hashed_pw_here', 'Prof. Jones', 'instructor');
+('alice', 'alice@example.com', 'Alice Smith', 'student'),
+('bob', 'bob@example.com', 'Bob Johnon', 'student'),
+('prof_jones', 'jones@example.com', 'Prof. Jones', 'instructor');
 
 INSERT INTO skills (name, category, description)
 VALUES

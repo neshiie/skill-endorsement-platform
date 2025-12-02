@@ -1,0 +1,42 @@
+DEBUG:MySQLPersistenceWrapper:2025-11-20 19:59:02,062:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-20 19:59:02,063:__init__: DB Connection Config Dict: {'database': 'skill_endorsement_db', 'user': 'root', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-20 19:59:02,063:Creating connection pool...
+DEBUG:MySQLPersistenceWrapper:2025-11-20 19:59:02,086:_initialize_database_connection_pool: Connection pool successfully created!
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:00:09,683:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:00:09,683:__init__: DB Connection Config Dict: {'database': 'skill_endorsement_db', 'user': 'root', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:00:09,683:Creating connection pool...
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:00:09,696:_initialize_database_connection_pool: Connection pool successfully created!
+DEBUG:AppServices:2025-11-20 20:00:09,696:__init__:It works!
+DEBUG:UserInterface:2025-11-20 20:00:09,697:__init__: UI initialized!
+DEBUG:UserInterface:2025-11-20 20:00:09,697:UI started!
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:00:38,464:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:00:38,464:__init__: DB Connection Config Dict: {'database': 'skill_endorsement_db', 'user': 'root', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:00:38,464:Creating connection pool...
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:00:38,475:_initialize_database_connection_pool: Connection pool successfully created!
+DEBUG:AppServices:2025-11-20 20:00:38,476:__init__:It works!
+DEBUG:UserInterface:2025-11-20 20:00:38,476:__init__: UI initialized!
+DEBUG:UserInterface:2025-11-20 20:00:38,476:UI started!
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:35:13,476:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:35:13,476:__init__: DB Connection Config Dict: {'database': 'skill_endorsement_db', 'user': 'root', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:35:13,476:Creating connection pool...
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:35:13,484:_initialize_database_connection_pool: Connection pool successfully created!
+DEBUG:AppServices:2025-11-20 20:35:13,485:__init__:It works!
+DEBUG:UserInterface:2025-11-20 20:35:13,485:__init__: UI initialized!
+DEBUG:UserInterface:2025-11-20 20:35:13,485:UI started!
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:50:23,690:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:50:23,690:__init__: DB Connection Config Dict: {'database': 'skill_endorsement_db', 'user': 'root', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:50:23,690:Creating connection pool...
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:50:23,708:_initialize_database_connection_pool: Connection pool successfully created!
+DEBUG:AppServices:2025-11-20 20:50:23,708:__init__:It works!
+DEBUG:UserInterface:2025-11-20 20:50:23,709:__init__: UI initialized!
+DEBUG:UserInterface:2025-11-20 20:50:23,709:UI started!
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:51:23,304:__init__:It works!
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:51:23,304:__init__: DB Connection Config Dict: {'database': 'skill_endorsement_db', 'user': 'root', 'host': 'localhost', 'port': 3306}
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:51:23,304:Creating connection pool...
+DEBUG:MySQLPersistenceWrapper:2025-11-20 20:51:23,318:_initialize_database_connection_pool: Connection pool successfully created!
+DEBUG:AppServices:2025-11-20 20:51:23,319:__init__:It works!
+DEBUG:UserInterface:2025-11-20 20:51:23,319:__init__: UI initialized!
+DEBUG:UserInterface:2025-11-20 20:51:23,319:UI started!
+DEBUG:AppServices:2025-11-21 03:24:45,205:__init__:It works!
+DEBUG:UserInterface:2025-11-21 03:24:45,205:__init__: UI initialized!
+DEBUG:UserInterface:2025-11-21 03:24:45,206:UI started!
