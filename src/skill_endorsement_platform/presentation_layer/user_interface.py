@@ -36,10 +36,32 @@ class UserInterface(ApplicationBase):
         self.console = Console()  # Rich console
         self._logger.log_debug(f"{inspect.currentframe().f_code.co_name}: UI initialized!")
 
+
+    class NotFoundError(Exception):
+        pass
+
+    def _get_single_row(self, query_name: str, param, what: str):
+        rows = self.DB.query(query_name, param)
+        if not rows:
+            raise NotFoundError(f"{what} '{param}' not found")
+        if len(rows) > 1:
+            raise NotFoundError(f"Multiple {what}s found for '{param}'")
+        return rows[0]
+
+    def _get_user_id(self, username: str, role_label: str) -> int:
+        row = self._get_single_row("get user id", username, role_label)
+        return row["user_id"]
+
+    def _get_skill_id(self, skill_name: str) -> int:
+        row = self._get_single_row("get skill id", skill_name, "skill")
+        return row["skill_id"]
+
+
+
     MENU_ITEMS = [
-        MenuItem("add_user",        "Add User",         ["1", "add",       "a", "u"]),
+        MenuItem("add_user",        "Add/Remove User",  ["1", "add",       "a", "u"]),
         MenuItem("view_users",      "View Users",       ["2", "view",      "vu"    ]),
-        MenuItem("add_skill",       "Add Skill",        ["3", "skill",     "s"     ]),
+        MenuItem("add_skill",       "Add/Remove Skill", ["3", "skill",     "s"     ]),
         MenuItem("view_skills",     "View Skills",      ["4", "vskill",    "vs"    ]),
         MenuItem("add_user_skill",  "Add User Skill",   ["5", "uskill", "usrskill" ]),
         MenuItem("write_review",    "Write Review",     ["6", "review",    "r", "w"]),
@@ -100,18 +122,27 @@ class UserInterface(ApplicationBase):
 
             match selection:
                 case "add_user":
-                    s_username      = Prompt.ask("[bold cyan]Enter new username")
-                    s_email         = Prompt.ask("[bold cyan]Enter email")
-                    s_fullname      = Prompt.ask("[bold cyan]Enter full name")
-                    s_role          = Prompt.ask("[bold cyan]Enter user role",
-                                                 choices=["student",
-                                                          "instructor",
-                                                          "admin"])
+                    choice = Prompt.ask("Are you adding (1) or removing (2) a user?",
+                                        choices = ["1","2"])
 
-                    self.DB.query("add user", s_username, s_email, s_fullname, s_role)
-                    self.console.print(f"Added user {s_username}")
-                    user = self.DB.query("get users by name", s_username)
-                    self._render_table(f"{s_username}", user)
+                    if choice == "1":
+                        s_username      = Prompt.ask("[bold cyan]Enter new username")
+                        s_email         = Prompt.ask("[bold cyan]Enter email")
+                        s_fullname      = Prompt.ask("[bold cyan]Enter full name")
+                        s_role          = Prompt.ask("[bold cyan]Enter user role",
+                                                     choices=["student",
+                                                              "instructor",
+                                                              "admin"])
+
+                        self.DB.query("add user", s_username, s_email, s_fullname, s_role)
+                        self.console.print(f"Added user {s_username}")
+                        user = self.DB.query("get users by name", s_username)
+                        self._render_table(f"{s_username}", user)
+
+                    elif choice == "2":
+                        s_username = Prompt.ask("[bold cyan]Enter username:")
+                        self.DB.query("remove user", s_username)
+                        self._render_table(f"All users", self.DB.query("view users"))
 
                 case "view_users":
                     users = self.DB.query("view users")
@@ -122,14 +153,23 @@ class UserInterface(ApplicationBase):
                     self._render_table(f"All skills", skills)
 
                 case "add_skill":
-                    s_name          = Prompt.ask("Enter skill name")
-                    s_category      = Prompt.ask("Enter skill category")
-                    s_description   = Prompt.ask("Enter skill description")
+                    choice = Prompt.ask("Are you adding (1) or removing (2) a skill?",
+                                        choices=["1","2"])
 
-                    self.DB.query("add skill", s_name, s_category, s_description)
-                    self.console.print(f"Added skill {s_name}")
-                    skill = self.DB.query("get skills by cat", f"%{s_category}%")
-                    self._render_table(f"{s_category}", skill)
+                    if choice == "1":
+                        s_name          = Prompt.ask("Enter skill name")
+                        s_category      = Prompt.ask("Enter skill category")
+                        s_description   = Prompt.ask("Enter skill description")
+
+                        self.DB.query("add skill", s_name, s_category, s_description)
+                        self.console.print(f"Added skill {s_name}")
+                        skill = self.DB.query("get skills by cat", f"%{s_category}%")
+                        self._render_table(f"{s_category}", skill)
+
+                    elif choice == "2":
+                        s_name = Prompt.ask("enter skill name: ")
+                        self.DB.query("remove skill", s_name)
+                        self._render_table(f"All skills", self.DB.query("view skills"))
 
                 case "add_user_skill":
                     s_name      = Prompt.ask("Enter username")
@@ -153,30 +193,49 @@ class UserInterface(ApplicationBase):
                     s_text   = Prompt.ask("Enter endorsement description")
                     s_rating = Prompt.ask("Enter rating")
 
-                    # fetch ids from given user and skill names
-                    source_userid = (self.DB.query("get user id", s_source))[0]['user_id']
-                    target_userid = self.DB.query("get user id", s_target)[0]['user_id']
-                    skill_id = self.DB.query("get skill id", s_skill)[0]['skill_id']
+                    # validate + resolve ids
+                    try:
+                        source_userid = self._get_user_id(s_source, "endorser user")
+                        target_userid = self._get_user_id(s_target, "endorsee user")
+                        skill_id      = self._get_skill_id(s_skill)
 
-                    self.DB.query("add endorsement",
-                                  source_userid,
-                                  target_userid,
-                                  skill_id,
-                                  s_text,
-                                  s_rating)
+                        # optional: validate rating
+                        rating_int = int(s_rating)
+                        if not (1 <= rating_int <= 5):
+                            self.console.print("[red]Rating must be between 1 and 5.[/red]")
+                            return
+
+                    except NotFoundError as e:
+                        self.console.print(f"[red]{e} – cannot create endorsement.[/red]")
+                        return
+                    except ValueError:
+                        self.console.print("[red]Rating must be a number.[/red]")
+                        return
+
+                    # insert endorsement
+                    try:
+                        self.DB.query(
+                            "add endorsement",
+                            source_userid,
+                            target_userid,
+                            skill_id,
+                            s_text,
+                            rating_int,
+                        )
+                    except Exception as e:  # or a more specific DB exception
+                        self.console.print(f"[red]Failed to save endorsement: {e}[/red]")
+                        return
+
+                    # show result
                     endorsement = self.DB.query("get endorsements by endorser",
                                                 source_userid)
+                    self._render_table(f"endorsement for {s_target}",
+                                       endorsement)
 
-                    self._render_table(
-                        (
-                            f"{s_skill} endorsement for {s_target}"
-                            f"by {s_source}"
-                        ),
-                        endorsement,
-                    )
 
                 case "read_reviews":
                     self.console.print("Reading reviews...")
+
                     s_username = Prompt.ask("Enter endorsee name")
 
                     user = self.DB.query("get users by name", s_username)

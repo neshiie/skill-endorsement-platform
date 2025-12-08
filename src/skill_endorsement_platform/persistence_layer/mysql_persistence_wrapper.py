@@ -40,6 +40,8 @@ class MySQLPersistenceWrapper(ApplicationBase):
 
             "get user id":          "SELECT user_id FROM users WHERE username = %s",
 
+            "remove user":          "DELETE FROM users WHERE username = %s",
+
             "add user": """
                 INSERT INTO users (
                     username,
@@ -58,6 +60,9 @@ class MySQLPersistenceWrapper(ApplicationBase):
             "get skills by cat":    "SELECT * FROM skills WHERE category LIKE %s",
 
             "get skill id":         "SELECT skill_id FROM skills WHERE name = %s",
+
+            "remove skill":         "DELETE FROM skills WHERE name = %s",
+
             "add skill": """
                     INSERT INTO skills (
                         name,
@@ -112,7 +117,7 @@ class MySQLPersistenceWrapper(ApplicationBase):
                 with cursor:
                     sql = self.QUERIES[query_name]
                     cursor.execute(sql, params)
-                    if "add" in query_name:
+                    if ("add" in query_name) or ("remove" in query_name):
                         connection.commit()
                     results = cursor.fetchall()
 
